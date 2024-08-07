@@ -9,7 +9,7 @@ function Install-Git {
     
     Invoke-WebRequest -Uri $asset.browser_download_url -OutFile $installer
     # run installer
-    $git_install_inf = ".\git_inf.txt"
+    $git_install_inf = ".\vars\git_inf.txt"
     $install_args = "/SP- /VERYSILENT /SUPPRESSMSGBOXES /NOCANCEL /NORESTART /CLOSEAPPLICATIONS /RESTARTAPPLICATIONS /LOADINF=""$git_install_inf"""
     Start-Process -FilePath $installer -ArgumentList $install_args -Wait
 
