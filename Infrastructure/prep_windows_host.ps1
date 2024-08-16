@@ -1,5 +1,6 @@
 # Installs Git application
 function Install-Git {
+    Write-Output "[*] Installing Git..."
     # get latest download url for git-for-windows 64-bit exe
     $git_url = "https://api.github.com/repos/git-for-windows/git/releases/latest"
     
@@ -15,6 +16,7 @@ function Install-Git {
 
     # verify installation
     git --version
+    Write-Output "[*] Git Installed!"
 }
 
 # Installs VSCode
@@ -28,6 +30,7 @@ function Install-VSCode {
         [ValidateSet($true,$false)]
         [string]$CreateShortCut = $true
     )
+    Write-Output "[*] Installing VS Code..."
 
     # Windows Version x64
     # Define the download URL and the destination
@@ -55,10 +58,12 @@ function Install-VSCode {
     #Write-Host Removing installation file
     Remove-Item $Destination
     #Write-Host Installation file removed
+    Write-Output "[*] VS Code Installed!"
 }
 
 # Installs Python
 function Install-Python3-12 {
+    Write-Output "[*] Installing Python 3.12..."
     # Get latest version of python from official site
     $pythonUrl = "https://www.python.org/ftp/python/3.12.5/python-3.12.5-amd64.exe"
     $pythonInstaller = "$($env:TEMP)\python.exe"
@@ -73,42 +78,11 @@ function Install-Python3-12 {
 
     #verify installation
     python --version 
+    Write-Output "[*] Python Installed!"
 }
 
 # Function calls
-Write-Output @"
-[*] ======================= [*]
-       Installing Git ...
-[*] ======================= [*]
-"@
 Install-Git
-Write-Output @"
-
-[*] ======================= [*]
-   Finished Installing Git!
-[*] ======================= [*]
-
-
-
-[*] ======================= [*]
-     Installing VS Code ...
-[*] ======================= [*]
-"@
 Install-VSCode
-Write-Output @"
-[*] ======================= [*]
-  Finished Installing VSCode!
-[*] ======================= [*]
-
-
-
-[*] ======================= [*]
-   Installing Python 3.12 ...
-[*] ======================= [*]
-"@
 Install-Python3-12
-Write-Output @"
-[*] ======================= [*]
-  Finished Installing Python!
-[*] ======================= [*]
-"@
+Write-Output 
