@@ -85,4 +85,3 @@ function Install-Python3-12 {
 Install-Git
 Install-VSCode
 Install-Python3-12
-Write-Output 
